@@ -1,27 +1,33 @@
 package basepack;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-@Test
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
+
+import utilPack.Excelread;
+
+
+
 public class Base_class {
-	
-	
+	public ChromeOptions option;
+	public String datafile;
 	public  ChromeDriver driver;
-	
+	@Parameters({"url"})
 	@BeforeMethod
-	public void Pre_condition() {
+	public void Pre_condition(String url) {
 		
-		ChromeOptions option = new ChromeOptions();
+		option = new ChromeOptions();
 		option.addArguments("disable-notifications");
 		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		driver.get("https://login.salesforce.com");
+		driver.get(url);
 		
 	}
 	
@@ -34,7 +40,11 @@ public class Base_class {
 	}
 	
 	
-	
+	@DataProvider(name="GetValue")
+	public String[][] data() throws IOException{
+		
+		return Excelread.readexcel(datafile);
+	}
 	
 	
 	

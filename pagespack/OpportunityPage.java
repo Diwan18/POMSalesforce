@@ -31,6 +31,7 @@ public class OpportunityPage extends Base_class{
 	
 	public OpportunityPage EnterTodayDate() throws InterruptedException {
 	driver.findElement(By.xpath("//input[@name='CloseDate']")).click();
+	Thread.sleep(5000);
 	driver.findElement(By.xpath("//button[@name='today']")).click();
 	Thread.sleep(5000);
 	return this;

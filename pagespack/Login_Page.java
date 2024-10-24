@@ -15,14 +15,14 @@ public class Login_Page extends Base_class{
 	}
 	
 	
-	public Login_Page Enter_UserName() {
-		driver.findElement(By.id("username")).sendKeys("dilip@testleaf.com");
+	public Login_Page Enter_UserName(String uname) {
+		driver.findElement(By.id("username")).sendKeys(uname);
 		return this;
 
 	}
 	
-	public Login_Page Enter_Password() {
-	driver.findElement(By.id("password")).sendKeys("leaf@2024");
+	public Login_Page Enter_Password(String pass) {
+	driver.findElement(By.id("password")).sendKeys(pass);
 	return this;}
 	
 	
